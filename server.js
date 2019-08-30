@@ -1,3 +1,5 @@
+require('dotenv').config();
+const CivicInformationApi = require('./server/CivicInformation/api');
 const express = require('express');
 const next = require('next');
 const url = require('url');
@@ -12,12 +14,33 @@ const port = process.env.PORT || 3000;
 // GraphQL schema
 var schema = buildSchema(`
     type Query {
-        message: String
+        officials(address: String!): [Official]
+    },
+    type Official {
+      name: String
+      address: [Address]
+      party: String
+    },
+    type Address {
+      locationName: String
+      line1: String
+      line2: String
+      line3: String
+      city: String
+      state: String
+      zip: String
     }
 `);
-// Root resolver
+
+const getOfficials = async function({ address }) {
+  const { officials } = await CivicInformationApi.representativeInfoByAddress(
+    address
+  );
+  return officials;
+};
+
 var root = {
-  message: () => 'Hello World!'
+  officials: getOfficials
 };
 
 nextApp
