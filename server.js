@@ -1,5 +1,6 @@
 require('dotenv').config();
 const CivicInformationApi = require('./server/CivicInformation/api');
+const TwitterApi = require('./server/Twitter/api');
 const express = require('express');
 const next = require('next');
 const url = require('url');
