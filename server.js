@@ -1,20 +1,43 @@
 const express = require('express');
 const next = require('next');
 const url = require('url');
+var express_graphql = require('express-graphql');
+var { buildSchema } = require('graphql');
 
 const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dir: '.', dev });
-const nextHandler = app.getRequestHandler();
+const nextApp = next({ dir: '.', dev });
+const nextHandler = nextApp.getRequestHandler();
 const port = process.env.PORT || 3000;
 
-app
+// GraphQL schema
+var schema = buildSchema(`
+    type Query {
+        message: String
+    }
+`);
+// Root resolver
+var root = {
+  message: () => 'Hello World!'
+};
+
+nextApp
   .prepare()
   .then(() => {
-    const server = express();
-    server.use(express.static('public'));
+    const app = express();
+    app.use(express.static('public'));
 
-    // Default catch-all renders Next app
-    server.get('*', (req, res) => {
+    // Create a GraphQL endpoint
+    app.use(
+      '/graphql',
+      express_graphql({
+        schema: schema,
+        rootValue: root,
+        graphiql: true
+      })
+    );
+
+    // Default catch-all renders Next nextApp
+    app.get('*', (req, res) => {
       // res.set({
       //   'Cache-Control': 'public, max-age=3600'
       // });
@@ -22,7 +45,7 @@ app
       nextHandler(req, res, parsedUrl);
     });
 
-    server.listen(port, err => {
+    app.listen(port, err => {
       if (err) throw err;
       console.log(`> Ready on port ${port}`);
     });
