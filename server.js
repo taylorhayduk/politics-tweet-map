@@ -14,12 +14,17 @@ const port = process.env.PORT || 3000;
 // GraphQL schema
 var schema = buildSchema(`
     type Query {
-        officials(address: String!): [Official]
+        officials(address: String!, channelType: String): [Official]
     },
     type Official {
       name: String
       address: [Address]
       party: String
+      phones: [String]
+      urls: [String]
+      photoUrl: String
+      emails: [String]
+      channels: [Channel]
     },
     type Address {
       locationName: String
@@ -30,12 +35,24 @@ var schema = buildSchema(`
       state: String
       zip: String
     }
+    type Channel {
+      type: String
+      id: String
+    }
 `);
 
-const getOfficials = async function({ address }) {
+const getOfficials = async function({ address, channelType }) {
   const { officials } = await CivicInformationApi.representativeInfoByAddress(
     address
   );
+  if (channelType) {
+    officials.map(official => {
+      official.channels =
+        official.channels &&
+        official.channels.filter(channel => channel.type === channelType);
+      return official;
+    });
+  }
   return officials;
 };
 
