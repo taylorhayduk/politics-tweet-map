@@ -4,8 +4,8 @@ const TwitterApi = require('./server/Twitter/api');
 const express = require('express');
 const next = require('next');
 const url = require('url');
-var express_graphql = require('express-graphql');
-var { buildSchema } = require('graphql');
+
+const { ApolloServer, gql } = require('apollo-server-express');
 
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dir: '.', dev });
@@ -13,7 +13,7 @@ const nextHandler = nextApp.getRequestHandler();
 const port = process.env.PORT || 3000;
 
 // GraphQL schema
-var schema = buildSchema(`
+var typeDefs = gql(`
     type Query {
         officials(address: String!, channelType: String): [Official]
     },
@@ -42,7 +42,8 @@ var schema = buildSchema(`
     }
 `);
 
-const getOfficials = async function({ address, channelType }) {
+const getOfficials = async (_parent, args, _context) => {
+  const { address, channelType } = args;
   const { officials } = await CivicInformationApi.representativeInfoByAddress(
     address
   );
@@ -57,8 +58,10 @@ const getOfficials = async function({ address, channelType }) {
   return officials;
 };
 
-var root = {
-  officials: getOfficials
+var resolvers = {
+  Query: {
+    officials: getOfficials
+  }
 };
 
 nextApp
@@ -67,21 +70,11 @@ nextApp
     const app = express();
     app.use(express.static('public'));
 
-    // Create a GraphQL endpoint
-    app.use(
-      '/graphql',
-      express_graphql({
-        schema: schema,
-        rootValue: root,
-        graphiql: true
-      })
-    );
+    const server = new ApolloServer({ typeDefs, resolvers });
+    server.applyMiddleware({ app });
 
     // Default catch-all renders Next nextApp
     app.get('*', (req, res) => {
-      // res.set({
-      //   'Cache-Control': 'public, max-age=3600'
-      // });
       const parsedUrl = url.parse(req.url, true);
       nextHandler(req, res, parsedUrl);
     });
