@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 // GraphQL schema
 var typeDefs = gql(`
   type Query {
-      officials(address: String!, channelType: String, limit: Int): [Official]
+      officials(address: String!, channelType: String, limit: Int, levels: Levels, roles: Roles): [Official]
   },
   type Official {
     name: String
@@ -44,12 +44,40 @@ var typeDefs = gql(`
   type Tweet {
     text: String
   }
+  enum Levels {
+    administrativeArea1
+    administrativeArea2
+    country
+    international
+    locality
+    regional
+    special
+    subLocality1
+    subLocality2
+  }
+  enum Roles {
+    deputyHeadOfGovernment
+    executiveCouncil
+    governmentOfficer
+    headOfGovernment
+    headOfState
+    highestCourtJudge
+    judge
+    legislatorLowerBody
+    legislatorUpperBody
+    schoolBoard
+    specialPurposeOfficer
+  }
 `);
 
 const getOfficials = async (_parent, args, _context) => {
-  const { address, channelType, limit } = args;
-  const { officials } = await CivicInformationApi.representativeInfoByAddress(
-    address
+  const { address, channelType, limit, levels, roles } = args;
+  const {
+    officials = []
+  } = await CivicInformationApi.representativeInfoByAddress(
+    address,
+    levels,
+    roles
   );
   if (limit) {
     officials.splice(limit);

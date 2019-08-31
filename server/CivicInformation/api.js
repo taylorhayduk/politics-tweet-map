@@ -11,11 +11,13 @@ const api = axios.create({
 });
 
 class CivicInformationApi {
-  static representativeInfoByAddress(address) {
+  static representativeInfoByAddress(address, levels, roles) {
     return api
       .get(`/representatives`, {
         params: {
-          address
+          address,
+          levels,
+          roles
         }
       })
       .then(({ data }) => data);
