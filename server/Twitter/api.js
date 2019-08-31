@@ -12,7 +12,8 @@ const api = axios.create({
 class Twitter {
   static async getTweets(userId) {
     return api.get(`/${userId}`).then(({ data: html }) => {
-      // NOTE: I didn't have time to get proper Twitter API credentials.
+      // THIS IS SLOW BUT AT LEAST AN OKAY PROOF-OF-CONCEPT
+      // I didn't have time to get proper Twitter API credentials.
       // I'm just manually screen scraping with cheerio - an html parsing library.
       // DO NOT this approach in production.
 
@@ -30,7 +31,5 @@ class Twitter {
     });
   }
 }
-
-Twitter.getTweets('realdonaldtrump').catch(err => console.log(err));
 
 module.exports = Twitter;
