@@ -1,34 +1,18 @@
-const axios = require('axios');
-const baseURL = 'http://twitter.com';
-const cheerio = require('cheerio');
+var TwitterClient = require('twitter');
 
-const api = axios.create({
-  baseURL,
-  headers: {
-    'Content-Type': 'application/json'
-  }
+var client = new TwitterClient({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  bearer_token: process.env.TWITTER_BEARER_TOKEN
 });
 
 class Twitter {
-  static async getTweets(userId) {
-    return api.get(`/${userId}`).then(({ data: html }) => {
-      // THIS IS SLOW BUT AT LEAST AN OKAY PROOF-OF-CONCEPT
-      // I didn't have time to get proper Twitter API credentials.
-      // I'm just manually screen scraping with cheerio - an html parsing library.
-      // DO NOT this approach in production.
-
-      const $ = cheerio.load(html);
-
-      const tweets = [];
-      $('p.tweet-text').each((i, element) => {
-        const tweet = {
-          text: $(element).text()
-        };
-        tweets.push(tweet);
-      });
-
-      return tweets;
+  static async getTweets(screen_name, count = 10) {
+    const tweets = await client.get('statuses/user_timeline', {
+      screen_name,
+      count
     });
+    return tweets;
   }
 }
 

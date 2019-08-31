@@ -77,7 +77,7 @@ var resolvers = {
         (parent.channels.find(channel => channel.type === 'Twitter') || {}).id;
       let tweets = [];
       if (twitterId) {
-        tweets = await TwitterApi.getTweets(twitterId);
+        tweets = await TwitterApi.getTweets(twitterId, limit);
       }
       tweets.splice(limit);
       return tweets;
