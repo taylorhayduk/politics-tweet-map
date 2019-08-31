@@ -14,32 +14,36 @@ const port = process.env.PORT || 3000;
 
 // GraphQL schema
 var typeDefs = gql(`
-    type Query {
-        officials(address: String!, channelType: String): [Official]
-    },
-    type Official {
-      name: String
-      address: [Address]
-      party: String
-      phones: [String]
-      urls: [String]
-      photoUrl: String
-      emails: [String]
-      channels: [Channel]
-    },
-    type Address {
-      locationName: String
-      line1: String
-      line2: String
-      line3: String
-      city: String
-      state: String
-      zip: String
-    }
-    type Channel {
-      type: String
-      id: String
-    }
+  type Query {
+      officials(address: String!, channelType: String): [Official]
+  },
+  type Official {
+    name: String
+    address: [Address]
+    party: String
+    phones: [String]
+    urls: [String]
+    photoUrl: String
+    emails: [String]
+    channels: [Channel]
+    tweets: [Tweet]
+  },
+  type Address {
+    locationName: String
+    line1: String
+    line2: String
+    line3: String
+    city: String
+    state: String
+    zip: String
+  }
+  type Channel {
+    type: String
+    id: String
+  }
+  type Tweet {
+    text: String
+  }
 `);
 
 const getOfficials = async (_parent, args, _context) => {
@@ -61,6 +65,18 @@ const getOfficials = async (_parent, args, _context) => {
 var resolvers = {
   Query: {
     officials: getOfficials
+  },
+  Official: {
+    tweets: async (parent, _args, _context) => {
+      let twitterId =
+        parent.channels &&
+        (parent.channels.find(channel => channel.type === 'Twitter') || {}).id;
+      let tweets = [];
+      if (twitterId) {
+        tweets = await TwitterApi.getTweets(twitterId);
+      }
+      return tweets;
+    }
   }
 };
 

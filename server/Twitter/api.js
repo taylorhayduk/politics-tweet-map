@@ -20,10 +20,13 @@ class Twitter {
 
       const tweets = [];
       $('p.tweet-text').each((i, element) => {
-        tweets.push($(element).text());
+        const tweet = {
+          text: $(element).text()
+        };
+        tweets.push(tweet);
       });
 
-      return $('body');
+      return tweets;
     });
   }
 }
