@@ -26,7 +26,7 @@ var typeDefs = gql(`
     photoUrl: String
     emails: [String]
     channels: [Channel]
-    tweets: [Tweet]
+    tweets(limit: Int): [Tweet]
   },
   type Address {
     locationName: String
@@ -70,7 +70,8 @@ var resolvers = {
     officials: getOfficials
   },
   Official: {
-    tweets: async (parent, _args, _context) => {
+    tweets: async (parent, args, _context) => {
+      const { limit } = args;
       let twitterId =
         parent.channels &&
         (parent.channels.find(channel => channel.type === 'Twitter') || {}).id;
@@ -78,6 +79,7 @@ var resolvers = {
       if (twitterId) {
         tweets = await TwitterApi.getTweets(twitterId);
       }
+      tweets.splice(limit);
       return tweets;
     }
   }
