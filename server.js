@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 // GraphQL schema
 var typeDefs = gql(`
   type Query {
-      officials(address: String!, channelType: String): [Official]
+      officials(address: String!, channelType: String, limit: Int): [Official]
   },
   type Official {
     name: String
@@ -47,10 +47,13 @@ var typeDefs = gql(`
 `);
 
 const getOfficials = async (_parent, args, _context) => {
-  const { address, channelType } = args;
+  const { address, channelType, limit } = args;
   const { officials } = await CivicInformationApi.representativeInfoByAddress(
     address
   );
+  if (limit) {
+    officials.splice(limit);
+  }
   if (channelType) {
     officials.map(official => {
       official.channels =
