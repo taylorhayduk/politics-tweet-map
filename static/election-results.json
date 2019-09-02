@@ -1,0 +1,308 @@
+[
+  {
+    "StateName": "Alabama",
+    "StateVotes": 9,
+    "Trump": 9,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Alaska",
+    "StateVotes": 3,
+    "Trump": 3,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Arizona",
+    "StateVotes": 11,
+    "Trump": 11,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Arkansas",
+    "StateVotes": 6,
+    "Trump": 6,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "California",
+    "StateVotes": 55,
+    "Trump": "-",
+    "Clinton": 55
+  },
+  {
+    "StateName": "Colorado",
+    "StateVotes": 9,
+    "Trump": "-",
+    "Clinton": 9
+  },
+  {
+    "StateName": "Connecticut",
+    "StateVotes": 7,
+    "Trump": "-",
+    "Clinton": 7
+  },
+  {
+    "StateName": "Delaware",
+    "StateVotes": 3,
+    "Trump": "-",
+    "Clinton": 3
+  },
+  {
+    "StateName": "District of Columbia",
+    "StateVotes": 3,
+    "Trump": "-",
+    "Clinton": 3
+  },
+  {
+    "StateName": "Florida",
+    "StateVotes": 29,
+    "Trump": 29,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Georgia",
+    "StateVotes": 16,
+    "Trump": 16,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Hawaii",
+    "StateVotes": 4,
+    "Trump": "-",
+    "Clinton": 3
+  },
+  {
+    "StateName": "Idaho",
+    "StateVotes": 4,
+    "Trump": 4,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Illinois",
+    "StateVotes": 20,
+    "Trump": "-",
+    "Clinton": 20
+  },
+  {
+    "StateName": "Indiana",
+    "StateVotes": 11,
+    "Trump": 11,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Iowa",
+    "StateVotes": 6,
+    "Trump": 6,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Kansas",
+    "StateVotes": 6,
+    "Trump": 6,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Kentucky",
+    "StateVotes": 8,
+    "Trump": 8,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Louisiana",
+    "StateVotes": 8,
+    "Trump": 8,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Maine",
+    "StateVotes": 4,
+    "Trump": 1,
+    "Clinton": 3
+  },
+  {
+    "StateName": "Maryland",
+    "StateVotes": 10,
+    "Trump": "-",
+    "Clinton": 10
+  },
+  {
+    "StateName": "Massachusetts",
+    "StateVotes": 11,
+    "Trump": "-",
+    "Clinton": 11
+  },
+  {
+    "StateName": "Michigan",
+    "StateVotes": 16,
+    "Trump": 16,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Minnesota",
+    "StateVotes": 10,
+    "Trump": "-",
+    "Clinton": 10
+  },
+  {
+    "StateName": "Mississippi",
+    "StateVotes": 6,
+    "Trump": 6,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Missouri",
+    "StateVotes": 10,
+    "Trump": 10,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Montana",
+    "StateVotes": 3,
+    "Trump": 3,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Nebraska",
+    "StateVotes": 5,
+    "Trump": 5,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Nevada",
+    "StateVotes": 6,
+    "Trump": "-",
+    "Clinton": 6
+  },
+  {
+    "StateName": "New Hampshire",
+    "StateVotes": 4,
+    "Trump": "-",
+    "Clinton": 4
+  },
+  {
+    "StateName": "New Jersey",
+    "StateVotes": 14,
+    "Trump": "-",
+    "Clinton": 14
+  },
+  {
+    "StateName": "New Mexico",
+    "StateVotes": 5,
+    "Trump": "-",
+    "Clinton": 5
+  },
+  {
+    "StateName": "New York",
+    "StateVotes": 29,
+    "Trump": "-",
+    "Clinton": 29
+  },
+  {
+    "StateName": "North Carolina",
+    "StateVotes": 15,
+    "Trump": 15,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "North Dakota",
+    "StateVotes": 3,
+    "Trump": 3,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Ohio",
+    "StateVotes": 18,
+    "Trump": 18,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Oklahoma",
+    "StateVotes": 7,
+    "Trump": 7,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Oregon",
+    "StateVotes": 7,
+    "Trump": "-",
+    "Clinton": 7
+  },
+  {
+    "StateName": "Pennsylvania",
+    "StateVotes": 20,
+    "Trump": 20,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Rhode Island",
+    "StateVotes": 4,
+    "Trump": "-",
+    "Clinton": 4
+  },
+  {
+    "StateName": "South Carolina",
+    "StateVotes": 9,
+    "Trump": 9,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "South Dakota",
+    "StateVotes": 3,
+    "Trump": 3,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Tennessee",
+    "StateVotes": 11,
+    "Trump": 11,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Texas",
+    "StateVotes": 38,
+    "Trump": 36,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Utah",
+    "StateVotes": 6,
+    "Trump": 6,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Vermont",
+    "StateVotes": 3,
+    "Trump": "-",
+    "Clinton": 3
+  },
+  {
+    "StateName": "Virginia",
+    "StateVotes": 13,
+    "Trump": "-",
+    "Clinton": 13
+  },
+  {
+    "StateName": "Washington",
+    "StateVotes": 12,
+    "Trump": "-",
+    "Clinton": 8
+  },
+  {
+    "StateName": "West Virginia",
+    "StateVotes": 5,
+    "Trump": 5,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Wisconsin",
+    "StateVotes": 10,
+    "Trump": 10,
+    "Clinton": "-"
+  },
+  {
+    "StateName": "Wyoming",
+    "StateVotes": 3,
+    "Trump": 3,
+    "Clinton": "-"
+  }
+]

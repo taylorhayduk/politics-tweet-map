@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { client } from '../components/apolloClient.js';
-import Map from '../components/map';
+import Map from '../components/MapD3';
 import OfficialsList from '../components/officialsList';
 
 class App extends Component {
