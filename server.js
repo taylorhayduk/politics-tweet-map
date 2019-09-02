@@ -18,14 +18,13 @@ nextApp
     const app = express();
     app.use(express.static('public'));
 
-    const { getOfficials, Official } = CivicInformationGraphql;
     const server = new ApolloServer({
       typeDefs: [CivicInformationGraphql.typeDefs, TwitterGraphql.typeDefs],
       resolvers: {
         Query: {
-          officials: getOfficials
+          ...CivicInformationGraphql.queries
         },
-        Official
+        ...CivicInformationGraphql.resolvers
       },
       playground: true
     });
