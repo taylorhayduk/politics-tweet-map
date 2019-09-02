@@ -41,7 +41,8 @@ class Map extends Component {
         .append('path')
         .attr('d', path)
         .on('click', feature => handleStateClick(feature.properties.NAME))
-        .style('stroke', '#fff')
+        .style('stroke', '#747474')
+        .style('fill', 'white')
         .style('stroke-width', '1');
     });
   };

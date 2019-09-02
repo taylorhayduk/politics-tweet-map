@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-
+import { ApolloProvider } from 'react-apollo';
+import { client } from '../components/apolloClient.js';
 import Map from '../components/map';
+import OfficialsList from '../components/officialsList';
 
 class App extends Component {
   constructor(props) {
@@ -9,13 +11,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <ApolloProvider client={client}>
         <Map
           handleStateClick={name => {
             console.log('got map name in index.js: ', name);
           }}
         />
-      </div>
+        <OfficialsList />
+      </ApolloProvider>
     );
   }
 }
