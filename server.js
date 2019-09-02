@@ -26,7 +26,8 @@ nextApp
           officials: getOfficials
         },
         Official
-      }
+      },
+      playground: true
     });
     server.applyMiddleware({ app });
 
