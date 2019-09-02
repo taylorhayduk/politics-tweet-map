@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedState: 'Washington, DC'
+      selectedState: 'Georgia'
     };
   }
 
@@ -19,8 +19,17 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <Map handleStateClick={this.handleStateClick} />
-        <OfficialsList selectedState={this.state.selectedState} />
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Map handleStateClick={this.handleStateClick} />
+          </div>
+          <OfficialsList selectedState={this.state.selectedState} />
+          <style jsx global>{`
+            body {
+              font-family: Helvetica Neue, Helvetica, Arial, Utkal, sans-serif;
+            }
+          `}</style>
+        </div>
       </ApolloProvider>
     );
   }
