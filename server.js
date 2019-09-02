@@ -26,7 +26,8 @@ nextApp
         },
         ...CivicInformationGraphql.resolvers
       },
-      playground: true
+      playground: true,
+      introspection: true
     });
     server.applyMiddleware({ app });
 
