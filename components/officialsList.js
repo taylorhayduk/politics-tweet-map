@@ -19,7 +19,7 @@ function OfficialsList({ selectedState }) {
   const { officials = [] } = data;
   return (
     <div>
-      <h2>Officials</h2>
+      <h2>Officials for {selectedState}</h2>
       <ul>
         {officials.map((official, i) => (
           <li key={i}>
