@@ -70,7 +70,7 @@ const CivicInformationGraphql = {
         (parent.channels.find(channel => channel.type === 'Twitter') || {}).id;
       let tweets = [];
       if (twitterId) {
-        tweets = await TwitterApi.getTweets(twitterId, limit);
+        tweets = await TwitterApi.getTweets(twitterId, limit).catch(err => []); // return empty array on error.  I believe is due to incorrect twitter handles
       }
       tweets.splice(limit);
       return tweets;

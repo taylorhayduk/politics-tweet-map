@@ -1,7 +1,21 @@
-import { graphql } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
-function OfficialsList({ data }) {
+function OfficialsList({ selectedState }) {
+  const { loading, error, data } = useQuery(gql`
+    {
+      officials(address: "${selectedState}, USA") {
+        name
+        party
+        tweets(limit: 2) {
+          text
+        }
+      }
+    }`);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :( </p>;
+
   const { officials = [] } = data;
   return (
     <div>
@@ -17,14 +31,4 @@ function OfficialsList({ data }) {
   );
 }
 
-export default graphql(gql`
-  query {
-    officials(address: "washington dc", limit: 2) {
-      name
-      party
-      tweets(limit: 2) {
-        text
-      }
-    }
-  }
-`)(OfficialsList);
+export default OfficialsList;

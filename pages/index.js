@@ -7,17 +7,20 @@ import OfficialsList from '../components/officialsList';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      selectedState: 'Washington, DC'
+    };
   }
+
+  handleStateClick = selectedState => {
+    this.setState({ selectedState });
+  };
 
   render() {
     return (
       <ApolloProvider client={client}>
-        <Map
-          handleStateClick={name => {
-            console.log('got map name in index.js: ', name);
-          }}
-        />
-        <OfficialsList />
+        <Map handleStateClick={this.handleStateClick} />
+        <OfficialsList selectedState={this.state.selectedState} />
       </ApolloProvider>
     );
   }
