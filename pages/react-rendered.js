@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MapReact from '../components/MapReact.js';
 import electionResults from '../static/election-results.json';
 import collection from '../static/us-states.json';
+import withLayout from '../components/layout.js';
 
 class App extends Component {
   constructor(props) {
@@ -47,14 +48,14 @@ class App extends Component {
   }
 
   render() {
-    const blue = '#2096F3';
-    const red = '#FF5252';
+    const cnnBlue = '#004D99';
+    const cnnRed = '#CC0000';
     return (
       <div>
-        <h2 style={{ color: red }}>
+        <h2 style={{ color: cnnRed }}>
           {`Trump: ${this.tallyCandidateVotes('Trump')}`}
         </h2>
-        <h2 style={{ color: blue }}>
+        <h2 style={{ color: cnnBlue }}>
           {`Clinton: ${this.tallyCandidateVotes('Clinton')}`}
         </h2>
         <MapReact
@@ -69,4 +70,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withLayout(App);
