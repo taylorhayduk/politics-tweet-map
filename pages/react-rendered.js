@@ -52,19 +52,23 @@ class App extends Component {
     const cnnRed = '#CC0000';
     return (
       <div>
-        <h2 style={{ color: cnnRed }}>
-          {`Trump: ${this.tallyCandidateVotes('Trump')}`}
-        </h2>
-        <h2 style={{ color: cnnBlue }}>
-          {`Clinton: ${this.tallyCandidateVotes('Clinton')}`}
-        </h2>
-        <MapReact
-          usStates={this.state.usStates}
-          electionResults={this.state.electionResults}
-          stateClick={this.handleUsStateClick}
-          svgHeight={800}
-          svgWidth={1000}
-        />
+        <div style={{ position: 'fixed', backgroundColor: 'white' }}>
+          <h2 style={{ color: cnnRed }}>
+            {`Trump: ${this.tallyCandidateVotes('Trump')}`}
+          </h2>
+          <h2 style={{ color: cnnBlue }}>
+            {`Clinton: ${this.tallyCandidateVotes('Clinton')}`}
+          </h2>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <MapReact
+            usStates={this.state.usStates}
+            electionResults={this.state.electionResults}
+            stateClick={this.handleUsStateClick}
+            svgHeight={500}
+            svgWidth={1000}
+          />
+        </div>
       </div>
     );
   }

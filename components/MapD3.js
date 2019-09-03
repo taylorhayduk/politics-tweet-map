@@ -48,7 +48,11 @@ class Map extends Component {
   };
 
   render() {
-    return <div ref="mapDiv" />;
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div ref="mapDiv" />
+      </div>
+    );
   }
 }
 export default Map;
