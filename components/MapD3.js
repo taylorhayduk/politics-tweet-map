@@ -28,8 +28,6 @@ class Map extends Component {
     var path = d3.geoPath().projection(projection);
 
     d3.json('static/us-states.json').then(function(json) {
-      d3.select('svg').remove();
-
       d3.select(refs.mapDiv)
         .append('svg')
         .attr('width', svgWidth)
